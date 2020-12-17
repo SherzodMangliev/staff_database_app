@@ -1,0 +1,174 @@
+{
+  "staff": [
+    {
+      "id": 5,
+      "name": "Шерзод Манглиев5",
+      "position": "Менеджер",
+      "branch_id": 1,
+      "branch_name": "Бухгалтерия",
+      "gender_id": 1,
+      "gender": "Мужчина",
+      "date": "06/06/97"
+    },
+    {
+      "id": 6,
+      "name": "Шерзод Манглиев6",
+      "position": "Менеджер",
+      "branch_id": 1,
+      "branch_name": "Бухгалтерия",
+      "gender_id": 1,
+      "gender": "Мужчина",
+      "date": "06/06/97"
+    },
+    {
+      "id": 17,
+      "name": "Шерзод Манглиев17",
+      "position": "Менеджер",
+      "branch_id": 0,
+      "branch_name": "ИТ",
+      "gender_id": 1,
+      "gender": "Мужчина",
+      "date": "06/06/97"
+    },
+    {
+      "id": 7,
+      "name": "Шерзод Манглиев7",
+      "position": "Менеджер",
+      "branch_id": 1,
+      "branch_name": "Бухгалтерия",
+      "gender_id": 1,
+      "gender": "Мужчина",
+      "date": "06/06/97"
+    },
+    {
+      "id": 8,
+      "name": "Шерзод Манглиев8",
+      "position": "Менеджер",
+      "branch_id": 1,
+      "branch_name": "Бухгалтерия",
+      "gender_id": 1,
+      "gender": "Мужчина",
+      "date": "06/06/97"
+    },
+    {
+      "id": 9,
+      "name": "Шерзод Манглиев9",
+      "position": "Менеджер",
+      "branch_id": 1,
+      "branch_name": "Бухгалтерия",
+      "gender_id": 1,
+      "gender": "Мужчина",
+      "date": "06/06/97"
+    },
+    {
+      "id": 10,
+      "name": "Шерзод Манглиев10",
+      "position": "Менеджер",
+      "branch_id": 1,
+      "branch_name": "Бухгалтерия",
+      "gender_id": 1,
+      "gender": "Мужчина",
+      "date": "06/06/97"
+    },
+    {
+      "id": 11,
+      "name": "Шерзод Манглиев1",
+      "position": "Менеджер",
+      "branch_id": 1,
+      "branch_name": "Бухгалтерия",
+      "gender_id": 1,
+      "gender": "Мужчина",
+      "date": "06/06/97"
+    },
+    {
+      "id": 12,
+      "name": "Шерзод Манглиев12",
+      "position": "Менеджер",
+      "branch_id": 2,
+      "branch_name": "Маркетинг",
+      "gender_id": 1,
+      "gender": "Мужчина",
+      "date": "06/06/97"
+    },
+    {
+      "id": 14,
+      "name": "Шерзод Манглиев14",
+      "position": "Менеджер",
+      "branch_id": 1,
+      "branch_name": "Бухгалтерия",
+      "gender_id": 1,
+      "gender": "Мужчина",
+      "date": "06/06/97"
+    },
+    {
+      "id": 15,
+      "name": "Шерзод Манглиев15",
+      "position": "Менеджер",
+      "branch_id": 2,
+      "branch_name": "Маркетинг",
+      "gender_id": 1,
+      "gender": "Мужчина",
+      "date": "06/06/97"
+    },
+    {
+      "id": 16,
+      "name": "Шерзод Манглиев16",
+      "position": "Менеджер",
+      "branch_id": 1,
+      "branch_name": "Бухгалтерия",
+      "gender_id": 1,
+      "gender": "Мужчина",
+      "date": "06/06/97"
+    },
+    {
+      "id": 17,
+      "name": "Фалончиева Пистончи",
+      "position": "Менеджер",
+      "branch_id": 1,
+      "branch_name": "Бухгалтерия",
+      "gender_id": 0,
+      "gender": "Женщина",
+      "date": "02/12/97"
+    },
+    {
+      "id": 18,
+      "name": "Фалончиева Пистончи",
+      "position": "Менеджер",
+      "branch_id": 2,
+      "branch_name": "Маркетинг",
+      "gender_id": 0,
+      "gender": "Женщина",
+      "date": "02/12/97"
+    },
+    {
+      "id": 19,
+      "name": "Фалончиева Пистончи",
+      "position": "Менеджер",
+      "branch_id": 1,
+      "branch_name": "Бухгалтерия",
+      "gender_id": 0,
+      "gender": "Женщина",
+      "date": "02/12/97"
+    },
+    {
+      "id": 20,
+      "name": "Фалончиева Пистончи",
+      "position": "Менеджер",
+      "branch_id": 2,
+      "branch_name": "Маркетинг",
+      "gender_id": 0,
+      "gender": "Женщина",
+      "date": "02/12/97"
+    },
+    {
+      "id": 21,
+      "name": "Фалончиева Пистончи",
+      "position": "Менеджер",
+      "branch_id": 2,
+      "branch_name": "Маркетинг",
+      "gender_id": 0,
+      "gender": "Женщина",
+      "date": "02/12/97"
+    }
+  ]
+}
