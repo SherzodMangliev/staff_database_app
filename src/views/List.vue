@@ -61,13 +61,13 @@
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li v-if="this.page > 1" class="page-item">
-          <button @click="previousPage()" class="page-link" href="#">Previous</button>
+          <button @click="previousPage()" class="page-link" href="#">Предыдущий</button>
         </li>
         <li v-for="page in pages" :key="page" class="page-item">
           <button @click="currentPage(page)" class="page-link">{{page}}</button>
         </li>
         <li v-if="this.page < pages" class="page-item">
-          <button @click="nextPage()" class="page-link" href="#">Next</button>
+          <button @click="nextPage()" class="page-link" href="#">Cледующий</button>
         </li>
       </ul>
     </nav>
