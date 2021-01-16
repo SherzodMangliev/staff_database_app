@@ -3,7 +3,7 @@
     <div class="container-fluid main-body pt-5 p-1">
       <div class="row pt-3 mx-0">
         <div class="col-lg-4 px-1">
-          <dashboard-card icon="fas fa-users" title="Количество всех сотрудников" :subtitle="numberOfProfiles" />
+          <dashboard-card icon="fas fa-users" title="Количество всех студентов" :subtitle="numberOfProfiles" />
         </div>
         <div class="col-lg-4 px-1">
           <dashboard-card icon="fas fa-male" title="Количество мужчин" :subtitle="numberOfMales" />
@@ -14,18 +14,18 @@
       </div>
       <div class="row pt-3 mx-0">
         <div class="col-lg-4 px-1">
-          <dashboard-card class="h-100" icon="fas fa-laptop-code" iconSize="fa-2x" title="Количество сотрудников в отделе ИТ" :subtitle="numberOfIt" />
+          <dashboard-card class="h-100" icon="fas fa-laptop-code" iconSize="fa-2x" title="Количество студентов в факултете ИТ" :subtitle="numberOfIt" />
         </div>
         <div class="col-lg-4 px-1">
-          <dashboard-card icon="fas fa-calculator" iconSize="fa-2x" title="Количество сотрудников в отделе Бухгалтерия" :subtitle="numberOfAccounting" />
+          <dashboard-card icon="fas fa-calculator" iconSize="fa-2x" title="Количество студентов в факултете Бухгалтерия" :subtitle="numberOfAccounting" />
         </div>
         <div class="col-lg-4 px-1">
-          <dashboard-card icon="fas fa-icons" iconSize="fa-2x" title="Количество сотрудников в отделе Маркетинг" :subtitle="numberOfMarketing" />
+          <dashboard-card icon="fas fa-icons" iconSize="fa-2x" title="Количество студентов в факултете Маркетинг" :subtitle="numberOfMarketing" />
         </div>
       </div>
       <div class="row mt-2 mx-0">
         <div class="col-lg-4">
-          <h6 class="text-center mb-0">Количество сотрудников в каждом отделе</h6>
+          <h6 class="text-center mb-0">Количество студентов в каждом факултете</h6>
           <chart-doughnut :title="chartTitle" :datasets="chartBranchDatasets" :labels="chartBranchLabels" />
         </div>
         <div class="col-lg-4">
@@ -84,8 +84,8 @@ export default {
   async created () {
     await this.fetchProfiles()
     this.numberOfProfiles = this.returnData.length
-    this.getNumberOfFemales()
     this.getNumberOfMales()
+    this.getNumberOfFemales()
     this.getNumberOfItProfiles()
     this.getNumberOfAccountingProfiles()
     this.getNumberOfMarketingProfiles()
