@@ -7,17 +7,21 @@
         <small id="nameHelp" v-if="!$v.name.required" class="form-text text-danger">Это обязательное поля</small>
       </div>
       <div class="form-group">
-        <label for="exampleInputSelect">Отдел</label>
+        <label for="exampleInputSelect">Факултет</label>
         <select class="custom-select" v-model="branch_id">
-          <option :selected="branch_it" value="0">ИТ</option>
-          <option :selected="branch_accounting" value="1">Бухгалтерия</option>
-          <option :selected="branch_marketing" value="2">Маркетинг</option>
+          <option :selected="formData.branch_id === 0" value="0">ИТ</option>
+          <option :selected="formData.branch_id === 1" value="1">Бухгалтерия</option>
+          <option :selected="formData.branch_id === 2" value="2">Маркетинг</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="exampleInputPosition">Должность</label>
-        <input v-model.trim="$v.position.$model" type="text" class="form-control" id="exampleInputPosition">
-        <small id="positionHelp" v-if="!$v.position.required" class="form-text text-danger">Это обязательное поля</small>
+        <label for="exampleInputPosition">Курс</label>
+        <select class="custom-select" v-model="level">
+          <option :selected="formData.level === 1" value="1">1</option>
+          <option :selected="formData.level === 2" value="2">2</option>
+          <option :selected="formData.level === 3" value="3">3</option>
+          <option :selected="formData.level === 4" value="4">4</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="exampleInputRadio">Выберите свой пол</label>
@@ -66,17 +70,16 @@ import { required } from 'vuelidate/lib/validators'
 export default {
   created () {
     this.whatGender()
-    this.whatBranch()
+    console.log(this.formData)
   },
   props: {
     formData: VueTypes.shape({
       id: VueTypes.number,
-      name: VueTypes.string,
-      position: VueTypes.string,
+      name: VueTypes.string.def(''),
+      position: VueTypes.string.def(''),
       branch_id: VueTypes.number,
-      branch_name: VueTypes.string,
       gender_id: VueTypes.number,
-      gender: VueTypes.string,
+      level: VueTypes.number,
       date: VueTypes.string
     }),
     url: VueTypes.string
@@ -89,14 +92,10 @@ export default {
       en: en,
       ru: ru,
       gender: true,
-      branch_it: false,
-      branch_accounting: false,
-      branch_marketing: false,
       name: this.formData.name,
-      position: this.formData.position,
+      level: this.formData.level,
       gender_id: this.formData.gender_id,
       branch_id: this.formData.branch_id,
-      branch_name: this.formData.branch_name,
       date: this.formData.date
     }
   },
@@ -108,33 +107,18 @@ export default {
         this.gender = true
       }
     },
-    whatBranch () {
-      switch (this.formData.branch_id) {
-        case 0:
-          this.branch_it = true
-          break
-        case 1:
-          this.branch_accounting = true
-          break
-        case 2:
-          this.branch_marketing = true
-          break
-        default:
-          this.branch_it = this.branch_accounting = this.branch_marketing = false
-      }
-    },
     submitForm () {
       console.log('submit!')
       this.$v.$touch()
       if (!this.$v.$invalid) {
         // console.log(this.name)
-        // console.log(this.position)
+        console.log(this.level)
         // console.log(this.gender_id)
         // console.log(this.branch_id)
         // console.log(this.date)
         const submittedData = {
           name: this.name,
-          position: this.position,
+          level: this.level,
           gender_id: this.gender_id,
           branch_id: this.branch_id,
           date: this.date
@@ -146,9 +130,6 @@ export default {
   },
   validations: {
     name: {
-      required
-    },
-    position: {
       required
     },
     date: {

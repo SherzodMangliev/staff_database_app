@@ -1,19 +1,17 @@
 import axios from 'axios'
 const state = {
   profiles: [],
-  filteredProfiles: [],
-  maleProfiles: [],
-  femaleProfiles: []
+  filteredProfiles: []
 }
 
 const actions = {
   async fetchProfiles ({ commit }) {
-    const url = await axios.get('http://localhost:3000/staff')
+    const url = await axios.get('http://localhost:3000/students')
     commit('setProfiles', url.data)
   },
   async fetchFilteredProfiles ({ commit }, query) {
     console.log(query)
-    let url = 'http://localhost:3000/staff?'
+    let url = 'http://localhost:3000/students?'
     url = url.concat(query)
     const data = await axios.get(url)
     console.log(data)
