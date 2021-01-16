@@ -1,22 +1,6 @@
 {
   "students": [
     {
-      "name": "Шерзод Манглиев",
-      "gender_id": 1,
-      "branch_id": 0,
-      "level": 1,
-      "date": "06/06/97",
-      "id": 0
-    },
-    {
-      "name": "Фалончиева Пистончи",
-      "level": 2,
-      "gender_id": 0,
-      "branch_id": 0,
-      "date": "06/06/97",
-      "id": 1
-    },
-    {
       "id": 2,
       "name": "Шерзод Манглиев2",
       "branch_id": 1,
@@ -79,14 +63,6 @@
       "gender_id": 0,
       "level": 3,
       "date": "06/06/97"
-    },
-    {
-      "id": 10,
-      "name": "Sherzod Mangliev",
-      "branch_id": 0,
-      "level": 2,
-      "gender_id": 1,
-      "date": "2021/01/01"
     }
   ]
 }

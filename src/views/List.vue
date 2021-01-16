@@ -132,6 +132,12 @@ export default {
   created () {
     this.getProfiles()
     console.log(this.profiles)
+    this.newStudent.id = this.profiles[0].id
+    for (let i = 0; i <= this.profiles.length; i++) {
+      if (this.profiles[i].id > this.newStudent.id) {
+        this.newStudent.id = this.profiles[i].id
+      }
+    }
   },
   computed: {
     ...mapGetters(['returnData', 'returnFilteredProfiles']),
@@ -167,7 +173,7 @@ export default {
       this.page = this.page + 1
     },
     deleteProfile (id) {
-      const url = `http://localhost:3000/staff/${id}`
+      const url = `http://localhost:3000/students/${id}`
       console.log(url)
       axios.delete(url).then(response => {
         console.log(response)
@@ -292,7 +298,7 @@ export default {
       console.log(data)
       console.log(this.dateFormatter(data.date))
       const newStudent = {
-        id: this.profiles.length,
+        id: this.id,
         name: data.name,
         branch_id: Number(data.branch_id),
         level: Number(data.level),
