@@ -27,13 +27,31 @@
         <p class="mb-0">Показать отдел маркетинг</p>
       </div>
     </div>
+    <div class="px-3 mb-2">
+      <button class="btn btn-success" data-toggle="modal" data-target="#formModal">Добавить новый студент</button>
+      <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModal" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Добаление нового студента</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <Form :formData="newStudent" @submit="addNewStudent" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <table class="table table-striped table-hover px-2">
       <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">ФИО</th>
-          <th scope="col">Отдел</th>
-          <th scope="col">Должность</th>
+          <th scope="col">Факултет</th>
+          <th scope="col">Курс</th>
           <th scope="col">Пол</th>
           <th scope="col">Дата рождения</th>
           <th scope="col">Действия</th>
@@ -43,10 +61,13 @@
         <tr v-for="profile in displayedProfiles" :key="profile.id">
           <th scope="row">{{(displayedProfiles.indexOf(profile)) + 1}}</th>
           <td>{{profile.name}}</td>
-          <td>{{profile.branch_name}}</td>
-          <td>{{profile.position}}</td>
-          <td>{{profile.gender}}</td>
-          <td>{{profile.date}}</td>
+          <td v-if="profile.branch_id === 0">ИТ</td>
+          <td v-if="profile.branch_id === 1">Бухгалтерия</td>
+          <td v-if="profile.branch_id === 2">Маркетинг</td>
+          <td>{{profile.level}}</td>
+          <td v-if="profile.gender_id === 1">Мужчина</td>
+          <td v-if="profile.gender_id === 0">Женщина</td>
+          <td>{{dateFormatter(profile.date)}}</td>
           <td>
             <router-link :to="{ name: 'profile', params: { id: profile.id }}">
               <button class="btn-primary btn"><i class="fas fa-eye"></i></button>
@@ -61,13 +82,13 @@
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li v-if="this.page > 1" class="page-item">
-          <button @click="previousPage()" class="page-link" href="#">Предыдущий</button>
+          <button @click="previousPage()" class="page-link" href="#">Previous</button>
         </li>
         <li v-for="page in pages" :key="page" class="page-item">
           <button @click="currentPage(page)" class="page-link">{{page}}</button>
         </li>
         <li v-if="this.page < pages" class="page-item">
-          <button @click="nextPage()" class="page-link" href="#">Cледующий</button>
+          <button @click="nextPage()" class="page-link" href="#">Next</button>
         </li>
       </ul>
     </nav>
@@ -78,21 +99,34 @@
 import { mapGetters, mapActions } from 'vuex'
 import axios from 'axios'
 import { ToggleButton } from 'vue-js-toggle-button'
+import Form from '../components/Form.vue'
+import moment from 'moment'
 export default {
   name: 'List',
   components: {
-    ToggleButton
+    ToggleButton,
+    Form
   },
   data () {
     return {
       profiles: [],
       pages: [],
       page: 1,
+      gender: true,
       perPage: 10,
       startPoint: 0,
       femaleGenderToggle: false,
       maleGenderToggle: false,
-      urlQuery: ''
+      urlQuery: '',
+      newStudent: {
+        id: null,
+        name: '',
+        level: null,
+        branch_id: null,
+        branch_name: '',
+        gender_id: null,
+        date: ''
+      }
     }
   },
   created () {
@@ -100,14 +134,14 @@ export default {
     console.log(this.profiles)
   },
   computed: {
-    ...mapGetters(['returnData', 'returnMaleProfiles', 'returnFemaleProfiles', 'returnFilteredProfiles']),
+    ...mapGetters(['returnData', 'returnFilteredProfiles']),
     displayedProfiles () {
       return this.pagination(this.profiles)
     }
   },
 
   methods: {
-    ...mapActions(['fetchProfiles', 'fetchMaleProfiles', 'fetchFemaleProfiles', 'fetchFilteredProfiles']),
+    ...mapActions(['fetchProfiles', 'fetchFilteredProfiles']),
     pagination (profiles) {
       const startPoint = (this.page * this.perPage) - this.perPage
       this.startPoint = startPoint
@@ -115,10 +149,9 @@ export default {
       return profiles.slice(startPoint, endPoint)
     },
     async getProfiles () {
-      await this.fetchFemaleProfiles()
       await this.fetchProfiles()
-      await this.fetchMaleProfiles()
       this.profiles = this.returnData
+      this.newStudent.id = this.profiles.length
       this.pages = this.numberOfPages(this.returnData)
     },
     currentPage (pageNumber) {
@@ -138,6 +171,7 @@ export default {
       console.log(url)
       axios.delete(url).then(response => {
         console.log(response)
+        this.getProfiles()
       }).catch(error => {
         console.log(error)
       })
@@ -250,6 +284,28 @@ export default {
         this.pages = this.numberOfPages(this.returnFilteredProfiles)
         this.profiles = this.returnFilteredProfiles
       }
+    },
+    dateFormatter (date) {
+      return moment(date).format('yyyy/MM/DD')
+    },
+    async addNewStudent (data) {
+      console.log(data)
+      console.log(this.dateFormatter(data.date))
+      const newStudent = {
+        id: this.profiles.length,
+        name: data.name,
+        branch_id: Number(data.branch_id),
+        level: Number(data.level),
+        gender_id: Number(data.gender_id),
+        date: this.dateFormatter(data.date)
+      }
+      await axios.post('http://localhost:3000/students', newStudent).then(response => {
+        console.log(response.data)
+      }).catch(error => {
+        console.log(error)
+      })
+      this.getProfiles()
+      window.location.reload()
     }
   }
 }
