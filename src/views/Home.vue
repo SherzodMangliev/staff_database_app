@@ -14,13 +14,13 @@
       </div>
       <div class="row pt-3 mx-0">
         <div class="col-lg-4 px-1">
-          <dashboard-card class="h-100" icon="fas fa-laptop-code" iconSize="fa-2x" title="Количество сотрудников в отделе ИТ" :subtitle="numberOfProfiles" />
+          <dashboard-card class="h-100" icon="fas fa-laptop-code" iconSize="fa-2x" title="Количество сотрудников в отделе ИТ" :subtitle="numberOfIt" />
         </div>
         <div class="col-lg-4 px-1">
-          <dashboard-card icon="fas fa-calculator" iconSize="fa-2x" title="Количество сотрудников в отделе Бухгалтерия" :subtitle="numberOfMales" />
+          <dashboard-card icon="fas fa-calculator" iconSize="fa-2x" title="Количество сотрудников в отделе Бухгалтерия" :subtitle="numberOfAccounting" />
         </div>
         <div class="col-lg-4 px-1">
-          <dashboard-card icon="fas fa-icons" iconSize="fa-2x" title="Количество сотрудников в отделе Маркетинг" :subtitle="numberOfFemales" />
+          <dashboard-card icon="fas fa-icons" iconSize="fa-2x" title="Количество сотрудников в отделе Маркетинг" :subtitle="numberOfMarketing" />
         </div>
       </div>
       <div class="row mt-2 mx-0">
@@ -59,6 +59,9 @@ export default {
       numberOfProfiles: null,
       numberOfFemales: null,
       numberOfMales: null,
+      numberOfIt: null,
+      numberOfMarketing: null,
+      numberOfAccounting: null,
       chartTitle: 'Количество cотрудников',
       chartBranchLabels: ['ИТ', 'Бухгалтерия', 'Маркетинг'],
       chartBranchDatasets: [
@@ -105,16 +108,19 @@ export default {
     async getNumberOfItProfiles () {
       await this.fetchFilteredProfiles('&branch_id=0')
       console.log(this.returnFilteredProfiles.length)
+      this.numberOfIt = this.returnFilteredProfiles.length
       this.chartBranchDatasets[0].data.push(this.returnFilteredProfiles.length)
     },
     async getNumberOfAccountingProfiles () {
       await this.fetchFilteredProfiles('&branch_id=1')
       console.log(this.returnFilteredProfiles.length)
+      this.numberOfAccounting = this.returnFilteredProfiles.length
       this.chartBranchDatasets[0].data.push(this.returnFilteredProfiles.length)
     },
     async getNumberOfMarketingProfiles () {
       await this.fetchFilteredProfiles('&branch_id=2')
       console.log(this.returnFilteredProfiles.length)
+      this.numberOfMarketing = this.returnFilteredProfiles.length
       this.chartBranchDatasets[0].data.push(this.returnFilteredProfiles.length)
     }
   }
