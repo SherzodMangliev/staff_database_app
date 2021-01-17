@@ -3,11 +3,11 @@
     <h1 class="pt-3 px-3">Список всех сотрудников</h1>
     <div class="gender-sort d-flex align-items-center px-3">
       <h5 class="mr-5 ">Сортировать по полу:</h5>
-      <div class="d-flex mr-5">
+      <div class="d-flex ml-4 pl-2 mr-5">
         <toggle-button class="mb-0" color="#82C7EB" :sync="true" v-model="maleGenderToggle" @change="onChangeMale"/>
         <p class="mb-0">Показать только мужчины</p>
       </div>
-      <div class="d-flex">
+      <div class="d-flex ml-4">
         <toggle-button class="mb-0" color="#fa8cab" :sync="true" v-model="femaleGenderToggle" @change="onChangeFemale"/>
         <p class="mb-0">Показать только женщины</p>
       </div>
