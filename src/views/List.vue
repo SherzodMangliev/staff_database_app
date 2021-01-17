@@ -13,18 +13,18 @@
       </div>
     </div>
     <div class="branch-sort d-flex align-items-center px-3">
-      <h5 class="mr-4">Сортировать по отделу:</h5>
+      <h5 class="mr-4">Сортировать по факултету:</h5>
       <div class="d-flex ml-1 mr-5">
         <toggle-button class="mb-0" color="#82C7EB" @change="onChangeBranchIt"/>
-        <p class="mb-0">Показать отдел ИТ</p>
+        <p class="mb-0">Показать факултет ИТ</p>
       </div>
       <div class="d-flex mx-5">
         <toggle-button class="mb-0 ml-1" color="#82C7EB" @change="onChangeBranchAccounting"/>
-        <p class="mb-0">Показать отдел бухгалтерия</p>
+        <p class="mb-0">Показать факултет бухгалтерия</p>
       </div>
       <div class="d-flex mr-5">
         <toggle-button class="mb-0" color="#82C7EB" @change="onChangeBranchMarketing"/>
-        <p class="mb-0">Показать отдел маркетинг</p>
+        <p class="mb-0">Показать факултет маркетинг</p>
       </div>
     </div>
     <div class="px-3 mb-2">
@@ -132,6 +132,7 @@ export default {
   created () {
     this.getProfiles()
     console.log(this.profiles)
+    console.log(this.pages.length)
     this.newStudent.id = this.profiles[0].id
     for (let i = 0; i <= this.profiles.length; i++) {
       if (this.profiles[i].id > this.newStudent.id) {

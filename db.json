@@ -63,6 +63,30 @@
       "gender_id": 0,
       "level": 3,
       "date": "06/06/97"
+    },
+    {
+      "name": "Sherzod3",
+      "level": 1,
+      "gender_id": 1,
+      "branch_id": 0,
+      "date": "2021/01/04",
+      "id": 10
+    },
+    {
+      "name": "Sherzod1",
+      "branch_id": 0,
+      "level": 1,
+      "gender_id": 1,
+      "date": "2021/01/04",
+      "id": 11
+    },
+    {
+      "name": "Sherzod2",
+      "branch_id": 0,
+      "level": 1,
+      "gender_id": 1,
+      "date": "2021/01/03",
+      "id": 12
     }
   ]
 }
